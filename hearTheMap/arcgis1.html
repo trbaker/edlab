@@ -54,7 +54,7 @@ view.on("click", function(evt){
     function showAddress(address, pt) {
     view.popup.open({
       title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-      content: address,
+      // content: address,
       location: pt
     });
   }
@@ -63,6 +63,7 @@ view.on("click", function(evt){
 
   </head>
   <body>
+  <h2>Click the map for the spoken location</h2>
     <div id="viewDiv"></div>
        <div id="audio"></div>
   </body>
