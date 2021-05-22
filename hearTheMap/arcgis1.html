@@ -1,12 +1,10 @@
 <html>
   <head>
-    <script src="speakClient.js"></script>
-
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-
-    <style>
-      html,
+    <title></title>
+<style>
+        html,
       body,
       #viewDiv {
         padding: 0;
@@ -15,14 +13,15 @@
         width: 100%;
       }
     </style>
+<link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
 
-    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
-    <script src="https://js.arcgis.com/4.19/"></script>
+<script src="speakClient.js"></script>
 
-    <script>
-      require(["esri/config","esri/Map", "esri/views/MapView"], function (esriConfig,Map, MapView) {
+<script src="https://js.arcgis.com/4.19/"></script>
 
-        esriConfig.apiKey = "AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
+<script>     require(["esri/config","esri/Map", "esri/views/MapView","esri/tasks/Locator"], function (esriConfig,Map, MapView,Locator) {
+
+        esriConfig.apiKey ="AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
 
         const map = new Map({
           basemap: "arcgis-topographic" // Basemap layer service
@@ -35,15 +34,39 @@
           container: "viewDiv" // Div element
         });
 
+ // Find address
+  const locatorTask = new Locator ({
+    url: "http://geocode-api.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+  })
+view.on("click", function(evt){
+      const params = {
+        location: evt.mapPoint
+      };
+   locatorTask.locationToAddress(params)
+        .then(function(response) { // Show the address found
+          const address = response.address;
+          showAddress(address, evt.mapPoint);
+        }, function(err) { // Show no address found
+          showAddress("No address found.", evt.mapPoint);
+        });
+  });
+    function showAddress(address, pt) {
+    view.popup.open({
+      title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
+      content: address,
+      location: pt
+    });
+  }
       });
     </script>
 
   </head>
   <body>
-  <h2>Hear ArcGIS I</h2>
     <div id="viewDiv"></div>
-
-    <div id="audio"></div>
-
-    </body>
+       <div id="audio"></div>
+  </body>
 </html>
+
+
+
+
