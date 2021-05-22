@@ -3,8 +3,19 @@
     <script src="speakClient.js"></script>
   </head>
   <body>
-    <h2>Lib test</h2>
-    <button onclick="speak('hello world')">Talk</button>
+    <h2>Speak.js Lib</h2>
+    <UL>
+    	<LI><a href="https://github.com/kripken/speak.js">Speak.js source on GitHUb</a>
+    </ul>
+
+    Samples belowattempt to blend speak.js with various web-based maps, including the ArcGIS Javascript API. The speak.js library seems to only work in CHrome.
+
+    <br /><br />
+    <button onclick="speak('hello world')">Test Talk</button>
     <div id="audio"></div>
+    <br /><br />
+
+    <input type='text' id='text1' name='text1'>
+    <button onclick="speak(document.getElementById('text1').value;)">Test Dynamic Talk</button>
   </body>
 </html>
