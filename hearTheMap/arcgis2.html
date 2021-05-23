@@ -38,7 +38,7 @@
          // Define a popup
     const popup = {
             "title": "<b>Biomes:</b> {Elem_Biome}",
-            "content": speak
+            "content": speaking
           }
         // feature layer
     const oneLayer = new FeatureLayer({
@@ -46,7 +46,7 @@
         popupTemplate: popup
           });
     map.add(oneLayer);
-	function speak() {
+	function speaking() {
 		//alert("testing");
 		speak('testing speak')
 		}
