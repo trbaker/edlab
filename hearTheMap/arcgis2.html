@@ -2,9 +2,10 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title></title>
-<style>
-        html,
+    <title>ArcGIS API for JavaScript Tutorials: Display a map</title>
+
+    <style>
+      html,
       body,
       #viewDiv {
         padding: 0;
@@ -13,65 +14,44 @@
         width: 100%;
       }
     </style>
-<link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+
+    <link rel="stylesheet" href="https://js.arcgis.com/4.19/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.19/"></script>
 
 <script src="speakClient.js"></script>
 
-<script src="https://js.arcgis.com/4.19/"></script>
+<script>
+      require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
-<script>     require(["esri/config","esri/Map",
-	"esri/views/MapView","esri/layers/FeatureLayer"],
-	function (esriConfig,Map, MapView,FeatureLayer)
-	{esriConfig.apiKey="AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
+        esriConfig.apiKey = "AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
+
         const map = new Map({
-          basemap: "arcgis-topographic" // Basemap layer service
+          basemap: "arcgis-oceans" // Basemap layer service
         });
 
         const view = new MapView({
           map: map,
-          center: [-95.2558, 38.9543], // Longitude, latitude
-          zoom: 11, // Zoom level
+          center: [-95.805, 40.027], // Longitude, latitude
+          zoom: 4, // Zoom level
           container: "viewDiv" // Div element
         });
-
- // feature layer
-  const biomesLayer = new FeatureLayer({
-    url: "https://services.arcgis.com/BG6nSlhZSAWtExvp/arcgis/rest/services/Biomes_Elementary/FeatureServer"
-  });
-
-  map.add(biomesLayer, 0);
-
-view.on("click", function(evt){
-      const params = {
-        location: evt.mapPoint
-      };
-   locatorTask.locationToAddress(params)
-        .then(function(response) { // Show the address found
-          const address = response.address;
-          speak(address);
-          showAddress(address, evt.mapPoint);
-        }, function(err) { // Show no address found
-          showAddress("No address found.", evt.mapPoint);
-        });
-  });
-    function showAddress(address, pt) {
-    view.popup.open({
-      title: 'test pop'',
-      content: ,
-      location: pt
-    });
-  }
+         // Define a pop-up for Trailheads
+      const popup = {
+            "title": "",
+            "content": "<b>Biomes:</b> {Elem_Biome}<br>",
+          }
+        // feature layer
+          const oneLayer = new FeatureLayer({
+            url: "https://services.arcgis.com/BG6nSlhZSAWtExvp/arcgis/rest/services/Biomes_Elementary/FeatureServer", outFields: ["Elem_Biome"],
+        popupTemplate: popup
+          });
+      map.add(oneLayer);
       });
     </script>
 
   </head>
   <body>
-  <h2>Click the map for the spoken location</h2>
     <div id="viewDiv"></div>
-       <div id="audio"></div>
+    <div id="audio"></div>
   </body>
 </html>
-
-
-
-
