@@ -21,32 +21,36 @@
 <script src="speakClient.js"></script>
 
 <script>
-      require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
+    require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
         esriConfig.apiKey = "AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
 
-        const map = new Map({
+    const map = new Map({
           basemap: "arcgis-oceans" // Basemap layer service
         });
 
-        const view = new MapView({
+    const view = new MapView({
           map: map,
           center: [-95.805, 40.027], // Longitude, latitude
           zoom: 4, // Zoom level
           container: "viewDiv" // Div element
         });
          // Define a popup
-      const popup = {
+    const popup = {
             "title": "",
             "content": "<b>Biomes:</b> {Elem_Biome}<br>"
           }
         // feature layer
-          const oneLayer = new FeatureLayer({
+    const oneLayer = new FeatureLayer({
             url: "https://services.arcgis.com/BG6nSlhZSAWtExvp/arcgis/rest/services/Biomes_Elementary/FeatureServer", outFields: ["Elem_Biome"],
-        popupTemplate: popup,
-        popupTemplate: speak('test')
+        popupTemplate: router
           });
-      map.add(oneLayer);
+    map.add(oneLayer);
+
+    function router() {
+    	popup
+    	};
+
       });
     </script>
 
