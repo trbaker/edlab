@@ -43,21 +43,22 @@
 
 view.on("click", function(evt){
       const params = {
-        location: evt.mapPoint
+        location: evt.mapPoint,
+        speak('line 47')
       };
    locatorTask.locationToAddress(params)
         .then(function(response) { // Show the address found
-          const address = response.address;
-          speak(address);
-          showAddress(address, evt.mapPoint);
+          //const address = response.address;
+          speak('hello');
+          popUp(address, evt.mapPoint);
         }, function(err) { // Show no address found
-          showAddress("No address found.", evt.mapPoint);
+          popUp("No address found.", evt.mapPoint);
         });
   });
-    function showAddress(address, pt) {
+    function popUp(biome, pt) {
     view.popup.open({
-      title:  + Math.round(pt.longitude * 100000)/100000 + ", " + Math.round(pt.latitude * 100000)/100000,
-      content: address,
+      title: 'test pop'',
+      content: biome,
       location: pt
     });
   }
