@@ -37,8 +37,8 @@
         });
          // Define a popup
     const popup = {
-            "title": "",
-            "content": "<b>Biomes:</b> {Elem_Biome}<br>"
+            "title": "<b>Biomes:</b> {Elem_Biome}",
+            "content": speak({Elem_Biome})
           }
         // feature layer
     const oneLayer = new FeatureLayer({
@@ -46,10 +46,6 @@
         popupTemplate: popup
           });
     map.add(oneLayer);
-
-    function router() {
-    	popup
-    	};
 
       });
     </script>
@@ -59,5 +55,6 @@
   <h2>Click a biome for audio v.1</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
+    <div id="textdiv"></div>
   </body>
 </html>
