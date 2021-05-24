@@ -52,7 +52,7 @@
 
 	function speaking(feature) {
 		var div = document.createElement("div");
-		div.innerHTML ="<h2>sample inner text " + feature.graphic.attributes.Elem_Biome + "</h2>";
+		div.innerHTML ="Biome: " + feature.graphic.attributes.Elem_Biome + ".";
 		//alert("testing: ", mywords);
 		speak(feature.graphic.attributes.Elem_Biome)
 		return div;
