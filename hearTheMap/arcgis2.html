@@ -42,7 +42,7 @@
     // Define a popup
     const popup = {
             "title": "<b>Biomes:</b> {Elem_Biome}",
-            "content": speaking,
+            "content": speaking
         }
 
     // feature layer
@@ -55,7 +55,7 @@
 
 	function speaking(feature) {
 		var div = document.createElement("div");
-		div.innerHTML = "sample inner text:  Elem_Biome"";
+		div.innerHTML = "sample innter text " + feature.graphic.attributes.Elem_biome;
 		//alert("testing: ", mywords);
 		//speak(mywords)
 		return div;
@@ -66,9 +66,9 @@
 
   </head>
   <body>
-  <h2>Click a biome for audio v .28</h2>
+  <h2>Click a biome for audio v .24</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
-	<div id="bigtext" style="font-size: 19px;"></div>
+	<div id="bigtext"></div>
   </body>
 </html>
