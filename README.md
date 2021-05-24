@@ -5,4 +5,4 @@ Online at: https://trbaker.github.io/edlab
 
 Projects:
 * Framesets
-* <a href="hearthemap">hear The Map</a>
+* <a href="https://github.com/trbaker/edlab/tree/main/hearTheMap">hear The Map</a>
