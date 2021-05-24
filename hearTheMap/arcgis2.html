@@ -22,7 +22,7 @@
 
 <script>
   	// my variables
-    let mywords = 'the word of tmo goes here';
+    let mybiome = 'test';
 
     require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
@@ -57,8 +57,7 @@
 		var div = document.createElement("div");
 		var mybiome = feature.graphic.attributes.Elem_Biome;
 		div.innerHTML = "Biome: " + mybiome;
-		//alert("testing: ", mywords);
-		speak(mybiome)
+		speak(mybiome);
 		return div;
 		}
 
@@ -67,7 +66,7 @@
 
   </head>
   <body>
-  <h2>Click a biome for audio v .33</h2>
+  <h2>Click a biome for audio v .34</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
 	<div id="bigtext">test</div>
