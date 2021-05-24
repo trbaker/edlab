@@ -22,7 +22,7 @@
 
 <script>
   	// my variables
-    let mywords = null;
+    let mywords = 'the word of tmo goes here';
 
     require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
@@ -42,7 +42,7 @@
     // Define a popup
     const popup = {
             "title": "<b>Biomes:</b> {Elem_Biome}",
-            "content": speaking(mywords)
+            "content": speaking
         }
 
     // feature layer
@@ -53,9 +53,12 @@
 
     map.add(oneLayer);
 
-	function speaking() {
-		alert("testing: ", mywords);
-		speak(mywords)
+	function speaking(feature) {
+		var div = document.createElement("div");
+		div.innerHTML = "sample innter text" + feature.graphic.attributes.Elem_biome;
+		//alert("testing: ", mywords);
+		//speak(mywords)
+		return div;
 		}
 
       });
