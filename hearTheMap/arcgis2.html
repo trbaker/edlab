@@ -22,7 +22,7 @@
 
 <script>
   	// my variables
-    let mybiome = 'test';
+    let mybiome = '';
 
     require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
@@ -56,7 +56,7 @@
 	function speaking(feature) {
 		var div = document.createElement("div");
 		var mybiome = feature.graphic.attributes.Elem_Biome;
-		div.innerHTML = "<h2>Biome: " + mybiome;
+		div.innerHTML = "<h1>Biome: " + mybiome + "</h1>";
 		speak(mybiome);
 		return div;
 		}
@@ -66,7 +66,7 @@
 
   </head>
   <body>
-  <h2>Click a biome for audio v .35</h2>
+  <h2>Click a biome for audio v .36</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
 	<div id="bigtext"></div>
