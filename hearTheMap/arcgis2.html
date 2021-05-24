@@ -35,21 +35,26 @@
           zoom: 4, // Zoom level
           container: "viewDiv" // Div element
         });
-         // Define a popup
+
+    // Define a popup
     const popup = {
             "title": "<b>Biomes:</b> {Elem_Biome}",
             "content": speaking
-          }
-        // feature layer
+        }
+
+    // feature layer
     const oneLayer = new FeatureLayer({
             url: "https://services.arcgis.com/BG6nSlhZSAWtExvp/arcgis/rest/services/Biomes_Elementary/FeatureServer", outFields: ["Elem_Biome"],
         popupTemplate: popup
-          });
+        });
+
     map.add(oneLayer);
+
 	function speaking() {
 		alert("testing: ");
-		speak('static text')
+		speak(Elem_Biome[0])
 		}
+
       });
     </script>
 
