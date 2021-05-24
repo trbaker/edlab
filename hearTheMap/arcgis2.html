@@ -21,6 +21,9 @@
 <script src="speakClient.js"></script>
 
 <script>
+  	// my variables
+    let mywords = null;
+
     require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
         esriConfig.apiKey = "AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
@@ -39,7 +42,7 @@
     // Define a popup
     const popup = {
             "title": "<b>Biomes:</b> {Elem_Biome}",
-            "content": speaking
+            "content": speaking('test')
         }
 
     // feature layer
@@ -51,8 +54,8 @@
     map.add(oneLayer);
 
 	function speaking() {
-		alert("testing: ");
-		speak(Elem_Biome[0])
+		alert("testing: ", mywords);
+		speak(mywords)
 		}
 
       });
@@ -60,9 +63,9 @@
 
   </head>
   <body>
-  <h2>Click a biome for audio v .21</h2>
+  <h2>Click a biome for audio v .22</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
-
+	<div id="bigtext"></div>
   </body>
 </html>
