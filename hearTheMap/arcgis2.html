@@ -21,6 +21,9 @@
 <script src="speakClient.js"></script>
 
 <script>
+  	// my variables
+    let mywords = 'the word of tmo goes here';
+
     require(["esri/config","esri/Map", "esri/views/MapView","esri/layers/FeatureLayer"], function (esriConfig,Map, MapView, FeatureLayer) {
 
         esriConfig.apiKey = "AAPK11bbcb09b237437e871e47d81988ffd7VSx1sa3gE7k4Fvnyu7IpG2QjEdN7b6WG28ZcyqjQN2ph9mJW6zDfMgzPM5kitjlv";
@@ -52,9 +55,9 @@
 
 	function speaking(feature) {
 		var div = document.createElement("div");
-		div.innerHTML ="Biome: " + feature.graphic.attributes.Elem_Biome + ".";
+		div.innerHTML = "sample inner text " + feature.graphic.attributes.Elem_Biome;
 		//alert("testing: ", mywords);
-		speak(feature.graphic.attributes.Elem_Biome)
+		//speak(mywords)
 		return div;
 		}
 
@@ -63,9 +66,9 @@
 
   </head>
   <body>
-  <h2>Click a biome for audio v .32</h2>
+  <h2>Click a biome for audio v .31d</h2>
     <div id="viewDiv"></div>
     <div id="audio"></div>
-	<div id="bigtext"></div>
+	<div id="bigtext">test</div>
   </body>
 </html>
