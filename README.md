@@ -1,5 +1,5 @@
 # edlab
-A space for exploring ideas that infuse geospatial tools into curriculum and instruction.
+There's no grand code here.  It's just a space for exploring ideas that blend geospatial tools into curriculum and instruction.
 
 Online at: https://trbaker.github.io/edlab 
 
